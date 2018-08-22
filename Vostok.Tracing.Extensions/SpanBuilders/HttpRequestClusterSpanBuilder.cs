@@ -4,14 +4,20 @@ using Vostok.Tracing.Extensions.Abstractions;
 
 namespace Vostok.Tracing.Extensions.SpanBuilders
 {
-    //implement ISpanBuilder for every span kind?
-    internal class HttpRequestClientSpanBuilder : InternalSpanBuilder, IHttpRequestSpanBuilder
+    internal class HttpRequestClusterSpanBuilder : InternalSpanBuilder, IHttpRequestClusterSpanBuilder
     {
-        protected readonly ISpanBuilder spanBuilder;
+        protected readonly ISpanBuilder SpanBuilder;
 
-        public HttpRequestClientSpanBuilder(ISpanBuilder spanBuilder) : base(spanBuilder)
+        public HttpRequestClusterSpanBuilder(ISpanBuilder spanBuilder)
+            : base(spanBuilder)
         {
-            this.spanBuilder = spanBuilder;
+            SpanBuilder = spanBuilder;
+        }
+
+        public void SetClusterDetails(string requestStrategy, string status)
+        {
+            SpanBuilder.SetAnnotation(AnnotationNames.Cluster.RequestStrategy, requestStrategy);
+            SpanBuilder.SetAnnotation(AnnotationNames.Cluster.Status, status);
         }
 
         public void SetRequestDetails(Uri uri, string httpMethodName, int contentLength)
