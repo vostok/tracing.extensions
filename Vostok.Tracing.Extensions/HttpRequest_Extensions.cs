@@ -12,7 +12,7 @@ namespace Vostok.Tracing.Extensions
 
             spanBuilder.SetAnnotation(AnnotationNames.SpanKind, "http-request-client");
 
-            return new HttpRequestSpanBuilder(spanBuilder);
+            return new HttpRequestClientSpanBuilder(spanBuilder);
         }
 
         public static IHttpRequestServerSpanBuilder BeginHttpRequestServerSpan(this ITracer tracer)
@@ -30,7 +30,7 @@ namespace Vostok.Tracing.Extensions
 
             spanBuilder.SetAnnotation(AnnotationNames.SpanKind, "http-request-cluster");
 
-            return new HttpRequestSpanClusterBuilder(spanBuilder);
+            return new HttpRequestClusterSpanBuilder(spanBuilder);
         }
     }
 }
