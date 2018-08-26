@@ -66,7 +66,7 @@ namespace Vostok.Tracing.Extensions.Tests
         {
             const string url = "https://kontur.ru/segment1/segment2?param1=a&param2=b";
 
-            var serverSpanBuilder = tracer.BeginHttpRequestServerSpan("handle http");
+            var serverSpanBuilder = tracer.BeginHttpRequestServerSpan("handle http request");
             serverSpanBuilder.SetRequestDetails(new Uri(url), "GET", 100500);
 
             innerSpanBuilder.Received().SetAnnotation(WellKnownAnnotations.Operation, "handle http request");
