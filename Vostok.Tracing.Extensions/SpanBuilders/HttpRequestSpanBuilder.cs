@@ -4,29 +4,37 @@ using Vostok.Tracing.Extensions.Abstractions;
 
 namespace Vostok.Tracing.Extensions.SpanBuilders
 {
-    //implement ISpanBuilder for every span kind?
-    internal class HttpRequestClientSpanBuilder : InternalSpanBuilder, IHttpRequestSpanBuilder
+    internal class HttpRequestSpanBuilder : InternalSpanBuilder, IHttpRequestSpanBuilder
     {
-        protected readonly ISpanBuilder spanBuilder;
+        private readonly string operationName;
 
-        public HttpRequestClientSpanBuilder(ISpanBuilder spanBuilder) : base(spanBuilder)
+        public HttpRequestSpanBuilder(ISpanBuilder spanBuilder, string operationName)
+            : base(spanBuilder)
         {
-            this.spanBuilder = spanBuilder;
+            this.operationName = operationName;
         }
 
-        public void SetRequestDetails(Uri uri, string httpMethodName, int contentLength)
+        public virtual void SetRequestDetails(Uri uri, string httpMethodName, int contentLength)
         {
-            spanBuilder.SetAnnotation(AnnotationNames.Http.Request.Url, uri.ToString());
-            spanBuilder.SetAnnotation(AnnotationNames.Http.Request.Method, httpMethodName);
-            spanBuilder.SetAnnotation(AnnotationNames.Http.Request.ContentLength, contentLength.ToString());
+            if (uri == null)
+                throw new ArgumentNullException(nameof(uri));
+            if (httpMethodName == null)
+                throw new ArgumentNullException(nameof(httpMethodName));
 
-            spanBuilder.SetAnnotation(AnnotationNames.Operation, $"({httpMethodName.ToUpper()}): {uri}");
+            //TODO: move to helpers
+            var urlWithoutQuery = uri.ToString().Split('?')[0];
+            SpanBuilder.SetAnnotation(WellKnownAnnotations.Http.Request.Url, urlWithoutQuery);
+            SpanBuilder.SetAnnotation(WellKnownAnnotations.Http.Request.Method, httpMethodName);
+            SpanBuilder.SetAnnotation(WellKnownAnnotations.Http.Request.Size, contentLength.ToPrettyString());
+
+            //TODO: use UrlNormalizer
+            SpanBuilder.SetAnnotation(WellKnownAnnotations.Operation, operationName ?? $"({httpMethodName.ToUpper()}): {urlWithoutQuery}");
         }
 
-        public void SetResponseDetails(int responseCode, int contentLength)
+        public virtual void SetResponseDetails(int responseCode, int contentLength)
         {
-            spanBuilder.SetAnnotation(AnnotationNames.Http.Response.StatusCode, responseCode.ToString());
-            spanBuilder.SetAnnotation(AnnotationNames.Http.Response.ContentLength, contentLength.ToString());
+            SpanBuilder.SetAnnotation(WellKnownAnnotations.Http.Response.Code, responseCode.ToPrettyString());
+            SpanBuilder.SetAnnotation(WellKnownAnnotations.Http.Response.Size, contentLength.ToPrettyString());
         }
     }
 }
