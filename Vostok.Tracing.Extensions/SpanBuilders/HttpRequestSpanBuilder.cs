@@ -1,4 +1,6 @@
 ﻿using System;
+using Vostok.Commons.Helpers;
+using Vostok.Commons.Helpers.Extensions;
 using Vostok.Tracing.Abstractions;
 using Vostok.Tracing.Extensions.Abstractions;
 
@@ -21,14 +23,11 @@ namespace Vostok.Tracing.Extensions.SpanBuilders
             if (httpMethodName == null)
                 throw new ArgumentNullException(nameof(httpMethodName));
 
-            //TODO: move to helpers
-            var urlWithoutQuery = uri.ToString().Split('?')[0];
-            SpanBuilder.SetAnnotation(WellKnownAnnotations.Http.Request.Url, urlWithoutQuery);
+            SpanBuilder.SetAnnotation(WellKnownAnnotations.Http.Request.Url, uri.ToStringWithoutQuery());
             SpanBuilder.SetAnnotation(WellKnownAnnotations.Http.Request.Method, httpMethodName);
             SpanBuilder.SetAnnotation(WellKnownAnnotations.Http.Request.Size, contentLength.ToPrettyString());
 
-            //TODO: use UrlNormalizer
-            SpanBuilder.SetAnnotation(WellKnownAnnotations.Operation, operationName ?? $"({httpMethodName.ToUpper()}): {urlWithoutQuery}");
+            SpanBuilder.SetAnnotation(WellKnownAnnotations.Operation, operationName ?? $"({httpMethodName.ToUpper()}): {UrlNormalizer.NormalizePath(uri)}");
         }
 
         public virtual void SetResponseDetails(int responseCode, int contentLength)
