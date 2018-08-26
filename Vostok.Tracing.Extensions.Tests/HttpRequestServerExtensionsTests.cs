@@ -58,7 +58,7 @@ namespace Vostok.Tracing.Extensions.Tests
             var serverSpanBuilder = tracer.BeginHttpRequestServerSpan(null);
             serverSpanBuilder.SetRequestDetails(new Uri(url), "GET", 100500);
 
-            innerSpanBuilder.Received().SetAnnotation(WellKnownAnnotations.Operation, "(GET): https://kontur.ru/segment1/segment2");
+            innerSpanBuilder.Received().SetAnnotation(WellKnownAnnotations.Operation, "(GET): segment1/segment2");
         }
 
         [Test]

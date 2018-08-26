@@ -30,5 +30,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\vostok.tracing.abstractions\Vostok.Tracing.Abstractions\bin\Release\netstandard2.0\Vostok.Tracing.Abstractions.dll</HintPath>
     </Reference>
+  <Compile Include="..\..\vostok.commons.helpers\Vostok.Commons.Helpers\Extensions\UrlExtensions.cs" Link="Commons\UrlExtensions.cs" />
+  <Compile Include="..\..\vostok.commons.helpers\Vostok.Commons.Helpers\UrlNormalizer.cs" Link="Commons\UrlNormalizer.cs" />
   </ItemGroup>
 </Project>
