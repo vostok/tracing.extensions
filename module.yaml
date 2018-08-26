@@ -10,7 +10,6 @@ notests *default:
 
   deps:
     - vostok.tracing.abstractions
-    - vostok.tracing
     - vostok.devtools
 
 full-build > notests:

@@ -5,37 +5,37 @@ namespace Vostok.Tracing.Extensions.SpanBuilders
 {
     internal class InternalSpanBuilder : ISpanBuilder
     {
-        protected readonly ISpanBuilder spanBuilder;
+        protected readonly ISpanBuilder SpanBuilder;
 
         public InternalSpanBuilder(ISpanBuilder spanBuilder)
         {
-            this.spanBuilder = spanBuilder;
+            SpanBuilder = spanBuilder;
         }
 
         public bool IsEndless
         {
-            get => spanBuilder.IsEndless;
-            set => spanBuilder.IsEndless = value;
+            get => SpanBuilder.IsEndless;
+            set => SpanBuilder.IsEndless = value;
         }
 
         public void Dispose()
         {
-            spanBuilder.Dispose();
+            SpanBuilder.Dispose();
         }
 
         public void SetAnnotation(string key, string value, bool allowOverwrite = true)
         {
-            spanBuilder.SetAnnotation(key, value, allowOverwrite);
+            SpanBuilder.SetAnnotation(key, value, allowOverwrite);
         }
 
         public void SetBeginTimestamp(DateTimeOffset timestamp)
         {
-            spanBuilder.SetBeginTimestamp(timestamp);
+            SpanBuilder.SetBeginTimestamp(timestamp);
         }
 
         public void SetEndTimestamp(DateTimeOffset timestamp)
         {
-            spanBuilder.SetEndTimestamp(timestamp);
+            SpanBuilder.SetEndTimestamp(timestamp);
         }
     }
 }

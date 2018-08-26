@@ -1,38 +1,29 @@
 ﻿using System;
+using JetBrains.Annotations;
 using Vostok.Tracing.Abstractions;
 using Vostok.Tracing.Extensions.Abstractions;
 
 namespace Vostok.Tracing.Extensions.SpanBuilders
 {
-    internal class HttpRequestClusterSpanBuilder : InternalSpanBuilder, IHttpRequestClusterSpanBuilder
+    internal class HttpRequestClusterSpanBuilder : HttpRequestSpanBuilder, IHttpRequestClusterSpanBuilder
     {
-        protected readonly ISpanBuilder SpanBuilder;
-
-        public HttpRequestClusterSpanBuilder(ISpanBuilder spanBuilder)
-            : base(spanBuilder)
+        public HttpRequestClusterSpanBuilder(ISpanBuilder spanBuilder, string operationName = null)
+            : base(spanBuilder, operationName)
         {
-            SpanBuilder = spanBuilder;
         }
 
-        public void SetClusterDetails(string requestStrategy, string status)
+        public void SetClusterDetails(string strategy)
         {
-            SpanBuilder.SetAnnotation(AnnotationNames.Cluster.RequestStrategy, requestStrategy);
-            SpanBuilder.SetAnnotation(AnnotationNames.Cluster.Status, status);
+            if (strategy == null)
+                throw new ArgumentNullException(nameof(strategy));
+            SpanBuilder.SetAnnotation(WellKnownAnnotations.Cluster.Strategy, strategy);
         }
 
-        public void SetRequestDetails(Uri uri, string httpMethodName, int contentLength)
+        public void SetClusterStatus(string status)
         {
-            spanBuilder.SetAnnotation(AnnotationNames.Http.Request.Url, uri.ToString());
-            spanBuilder.SetAnnotation(AnnotationNames.Http.Request.Method, httpMethodName);
-            spanBuilder.SetAnnotation(AnnotationNames.Http.Request.ContentLength, contentLength.ToString());
-
-            spanBuilder.SetAnnotation(AnnotationNames.Operation, $"({httpMethodName.ToUpper()}): {uri}");
-        }
-
-        public void SetResponseDetails(int responseCode, int contentLength)
-        {
-            spanBuilder.SetAnnotation(AnnotationNames.Http.Response.StatusCode, responseCode.ToString());
-            spanBuilder.SetAnnotation(AnnotationNames.Http.Response.ContentLength, contentLength.ToString());
+            if (status == null)
+                throw new ArgumentNullException(nameof(status));
+            SpanBuilder.SetAnnotation(WellKnownAnnotations.Cluster.Status, status);
         }
     }
 }

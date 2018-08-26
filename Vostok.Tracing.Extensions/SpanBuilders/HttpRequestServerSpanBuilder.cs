@@ -4,35 +4,22 @@ using Vostok.Tracing.Extensions.Abstractions;
 
 namespace Vostok.Tracing.Extensions.SpanBuilders
 {
-    internal class HttpRequestServerSpanBuilder : InternalSpanBuilder, IHttpRequestServerSpanBuilder
+    internal class HttpRequestServerSpanBuilder : HttpRequestSpanBuilder, IHttpRequestServerSpanBuilder
     {
-        private readonly ISpanBuilder spanBuilder;
-
-        public HttpRequestServerSpanBuilder(ISpanBuilder spanBuilder)
-            : base(spanBuilder)
+        public HttpRequestServerSpanBuilder(ISpanBuilder spanBuilder, string operationName)
+            : base(spanBuilder, operationName)
         {
-            this.spanBuilder = spanBuilder;
         }
 
         public void SetClientDetails(string name, string address)
         {
-            spanBuilder.SetAnnotation(AnnotationNames.Http.Client.Name, name);
-            spanBuilder.SetAnnotation(AnnotationNames.Http.Client.Address, address);
-        }
+            if (name == null)
+                throw new ArgumentNullException(nameof(name));
+            if (address == null)
+                throw new ArgumentNullException(nameof(address));
 
-        public void SetRequestDetails(Uri uri, string httpMethodName, int contentLength)
-        {
-            spanBuilder.SetAnnotation(AnnotationNames.Http.Request.Url, uri.ToString());
-            spanBuilder.SetAnnotation(AnnotationNames.Http.Request.Method, httpMethodName);
-            spanBuilder.SetAnnotation(AnnotationNames.Http.Request.ContentLength, contentLength.ToString());
-
-            spanBuilder.SetAnnotation(AnnotationNames.Operation, $"({httpMethodName.ToUpper()}): {uri}");
-        }
-
-        public void SetResponseDetails(int responseCode, int contentLength)
-        {
-            spanBuilder.SetAnnotation(AnnotationNames.Http.Response.StatusCode, responseCode.ToString());
-            spanBuilder.SetAnnotation(AnnotationNames.Http.Response.ContentLength, contentLength.ToString());
+            SpanBuilder.SetAnnotation(WellKnownAnnotations.Http.Client.Name, name);
+            SpanBuilder.SetAnnotation(WellKnownAnnotations.Http.Client.Address, address);
         }
     }
 }
