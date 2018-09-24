@@ -7,11 +7,12 @@ notests *default:
 
   install:
     - Vostok.Tracing.Extensions/bin/Release/netstandard2.0/Vostok.Tracing.Extensions.dll
+    - module vostok.tracing.abstractions
 
   deps:
     - vostok.tracing.abstractions
-    - vostok.commons.helpers
     - vostok.devtools
+    - vostok.commons.helpers/src
 
 full-build > notests:
   build:
