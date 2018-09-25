@@ -1,6 +1,5 @@
 ﻿using System;
-using Vostok.Commons.Helpers;
-using Vostok.Commons.Helpers.Extensions;
+using Vostok.Commons.Helpers.Url;
 using Vostok.Tracing.Abstractions;
 using Vostok.Tracing.Extensions.Helpers;
 
