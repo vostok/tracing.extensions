@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Globalization;
 using JetBrains.Annotations;
 using Vostok.Tracing.Abstractions;
 
@@ -30,17 +29,7 @@ namespace Vostok.Tracing.Extensions.Helpers
             builder.Dispose();
         }
 
-        public void SetAnnotation(string key, int value)
-        {
-            SetAnnotation(key, value.ToString(CultureInfo.InvariantCulture));
-        }
-
-        public void SetAnnotation(string key, long value)
-        {
-            SetAnnotation(key, value.ToString(CultureInfo.InvariantCulture));
-        }
-
-        public void SetAnnotation(string key, string value, bool allowOverwrite = true)
+        public void SetAnnotation(string key, object value, bool allowOverwrite = true)
         {
             builder.SetAnnotation(key, value, allowOverwrite);
         }

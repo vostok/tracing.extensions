@@ -19,7 +19,7 @@ namespace Vostok.Tracing.Extensions.Http
 
             if (address != null)
             {
-                SetAnnotation(WellKnownAnnotations.Http.Client.Address, address.ToString());
+                SetAnnotation(WellKnownAnnotations.Http.Client.Address, address);
             }
         }
     }
