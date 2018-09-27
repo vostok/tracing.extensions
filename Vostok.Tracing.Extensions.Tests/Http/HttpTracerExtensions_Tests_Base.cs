@@ -90,7 +90,7 @@ namespace Vostok.Tracing.Extensions.Tests.Http
         {
             BeginSpan().SetRequestDetails(absoluteUrl, "GET", 456);
 
-            builder.Received(1).SetAnnotation(WellKnownAnnotations.Http.Request.Size, "456");
+            builder.Received(1).SetAnnotation(WellKnownAnnotations.Http.Request.Size, 456L);
         }
 
         [Test]
@@ -106,7 +106,7 @@ namespace Vostok.Tracing.Extensions.Tests.Http
         {
             BeginSpan().SetResponseDetails(200, null);
 
-            builder.Received(1).SetAnnotation(WellKnownAnnotations.Http.Response.Code, "200");
+            builder.Received(1).SetAnnotation(WellKnownAnnotations.Http.Response.Code, 200);
         }
 
         [Test]
@@ -114,7 +114,7 @@ namespace Vostok.Tracing.Extensions.Tests.Http
         {
             BeginSpan().SetResponseDetails(200, 456);
 
-            builder.Received(1).SetAnnotation(WellKnownAnnotations.Http.Response.Size, "456");
+            builder.Received(1).SetAnnotation(WellKnownAnnotations.Http.Response.Size, 456L);
         }
 
         [Test]

@@ -28,9 +28,11 @@ namespace Vostok.Tracing.Extensions.Tests.Http
         [Test]
         public void SetClientDetails_should_record_client_address_annotation()
         {
-            tracer.BeginHttpServerSpan().SetClientDetails("srv", IPAddress.Parse("1.2.3.4"));
+            var address = IPAddress.Parse("1.2.3.4");
 
-            builder.Received(1).SetAnnotation(WellKnownAnnotations.Http.Client.Address, "1.2.3.4");
+            tracer.BeginHttpServerSpan().SetClientDetails("srv", address);
+
+            builder.Received(1).SetAnnotation(WellKnownAnnotations.Http.Client.Address, address);
         }
 
         [Test]
