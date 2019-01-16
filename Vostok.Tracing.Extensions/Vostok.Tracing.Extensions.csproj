@@ -16,13 +16,13 @@
 
   <PropertyGroup>
     <Title>Vostok.Tracing.Extensions</Title>
-    <Description>Vostok.Tracing.Extensions</Description>
+    <Description>This library contains a set of extensions for common case scenarios (such as HTTP request tracing).</Description>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageProjectUrl>https://github.com/vostok/tracing.extensions.git</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/vostok/tracing.extensions.git/blob/master/LICENSE</PackageLicenseUrl>
-    <PackageTags>vostok</PackageTags>
+    <PackageTags>vostok vostok.tracing</PackageTags>
     <RepositoryUrl>https://github.com/vostok/tracing.extensions.git</RepositoryUrl>
   </PropertyGroup>
 
