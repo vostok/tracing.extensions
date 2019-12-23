@@ -29,9 +29,26 @@ namespace Vostok.Tracing.Extensions.Http
             SetAnnotation(WellKnownAnnotations.Http.Request.Method, method);
 
             if (bodySize.HasValue)
-            {
                 SetAnnotation(WellKnownAnnotations.Http.Request.Size, bodySize.Value);
-            }
+        }
+
+        public void SetRequestDetails(string url, string method, long? bodySize)
+        {
+            if (url == null)
+                throw new ArgumentNullException(nameof(url));
+
+            if (method == null)
+                throw new ArgumentNullException(nameof(method));
+
+            url = UrlExtensions.ToStringWithoutQuery(url);
+
+            SetAnnotation(WellKnownAnnotations.Common.Operation, operationName ?? $"{method}: {UrlNormalizer.NormalizePath(url)}");
+
+            SetAnnotation(WellKnownAnnotations.Http.Request.Url, url);
+            SetAnnotation(WellKnownAnnotations.Http.Request.Method, method);
+
+            if (bodySize.HasValue)
+                SetAnnotation(WellKnownAnnotations.Http.Request.Size, bodySize.Value);
         }
 
         public void SetResponseDetails(int responseCode, long? bodySize)
