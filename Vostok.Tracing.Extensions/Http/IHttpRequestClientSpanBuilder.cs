@@ -5,7 +5,7 @@ namespace Vostok.Tracing.Extensions.Http
 {
     /// <summary>
     /// <para>Represents a builder that produces annotations relevant for HTTP request spans of <see cref="WellKnownSpanKinds.HttpRequest.Client"/> kind.</para>
-    /// <para>See <see cref="IHttpRequestSpanBuilder.SetRequestDetails(System.Uri,string,System.Nullable{long})"/>, <see cref="IHttpRequestSpanBuilder.SetResponseDetails"/> and <see cref="SetTargetDetails"/> for more info.</para>
+    /// <para>See <see cref="IHttpRequestSpanBuilder.SetRequestDetails"/>, <see cref="IHttpRequestSpanBuilder.SetResponseDetails"/> and <see cref="SetTargetDetails"/> for more info.</para>
     /// </summary>
     [PublicAPI]
     public interface IHttpRequestClientSpanBuilder : IHttpRequestSpanBuilder
