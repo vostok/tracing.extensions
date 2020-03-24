@@ -8,7 +8,7 @@ namespace Vostok.Tracing.Extensions
     public static class ITracerExtensions
     {
         /// <summary>
-        /// <para>Begins construction of a new span which will belong to new trace and returns a builder responsible for it (see <see cref="ISpanBuilder"/> for details).</para>
+        /// <para>Begins construction of a new span which will belong a to new trace and returns a builder responsible for it (see <see cref="ISpanBuilder"/> for details).</para>
         /// <para>Disposing this builder will return back previous trace context.</para>
         /// </summary>
         [NotNull]
