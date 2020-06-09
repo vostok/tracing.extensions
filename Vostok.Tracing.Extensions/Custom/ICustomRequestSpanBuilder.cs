@@ -15,7 +15,7 @@ namespace Vostok.Tracing.Extensions.Custom
         ///     <item><description><see cref="WellKnownAnnotations.Custom.Request.Size"/> (if provided with non-null value)</description></item>
         /// </list>
         /// </summary>
-        void SetRequestDetails([CanBeNull] long? bodySize);
+        void SetRequestDetails([CanBeNull] long? size);
 
         /// <summary>
         /// <para>Produces following annotations based on given inputs:</para>
@@ -24,6 +24,6 @@ namespace Vostok.Tracing.Extensions.Custom
         ///     <item><description><see cref="WellKnownAnnotations.Custom.Response.Size"/> (if provided with non-null value)</description></item>
         /// </list>
         /// </summary>
-        void SetResponseDetails([NotNull] string status, [CanBeNull] long? bodySize);
+        void SetResponseDetails([NotNull] string status, [CanBeNull] long? size);
     }
 }
