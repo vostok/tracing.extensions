@@ -24,5 +24,18 @@ namespace Vostok.Tracing.Extensions.Custom
             if (size.HasValue)
                 SetAnnotation(WellKnownAnnotations.Custom.Response.Size, size.Value);
         }
+
+        public void SetTargetDetails(string targetService, string targetEnvironment)
+        {
+            if (targetService != null)
+            {
+                SetAnnotation(WellKnownAnnotations.Custom.Request.TargetService, targetService);
+            }
+
+            if (targetEnvironment != null)
+            {
+                SetAnnotation(WellKnownAnnotations.Custom.Request.TargetEnvironment, targetEnvironment);
+            }
+        }
     }
 }
