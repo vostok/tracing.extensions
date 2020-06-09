@@ -11,18 +11,18 @@ namespace Vostok.Tracing.Extensions.Custom
         {
         }
 
-        public void SetRequestDetails(long? bodySize)
+        public void SetRequestDetails(long? size)
         {
-            if (bodySize.HasValue)
-                SetAnnotation(WellKnownAnnotations.Custom.Request.Size, bodySize.Value);
+            if (size.HasValue)
+                SetAnnotation(WellKnownAnnotations.Custom.Request.Size, size.Value);
         }
 
-        public void SetResponseDetails(string status, long? bodySize)
+        public void SetResponseDetails(string status, long? size)
         {
             SetAnnotation(WellKnownAnnotations.Custom.Response.Status, status);
 
-            if (bodySize.HasValue)
-                SetAnnotation(WellKnownAnnotations.Custom.Response.Size, bodySize.Value);
+            if (size.HasValue)
+                SetAnnotation(WellKnownAnnotations.Custom.Response.Size, size.Value);
         }
     }
 }
