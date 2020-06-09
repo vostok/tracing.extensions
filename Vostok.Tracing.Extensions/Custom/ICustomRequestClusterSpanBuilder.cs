@@ -4,10 +4,10 @@ using Vostok.Tracing.Abstractions;
 namespace Vostok.Tracing.Extensions.Custom
 {
     /// <summary>
-    /// Represents a builder that produces annotations relevant for not HTTP request spans of <see cref="WellKnownSpanKinds.Custom.Client"/> kind.
+    /// Represents a builder that produces annotations relevant for not HTTP request spans of <see cref="WellKnownSpanKinds.Custom.Cluster"/> kind.
     /// </summary>
     [PublicAPI]
-    public interface ICustomRequestClientSpanBuilder : ICustomRequestSpanBuilder
+    public interface ICustomRequestClusterSpanBuilder : ICustomRequestSpanBuilder
     {
         /// <summary>
         /// <para>Produces following annotations based on given inputs:</para>
@@ -17,13 +17,5 @@ namespace Vostok.Tracing.Extensions.Custom
         /// </list>
         /// </summary>
         void SetTargetDetails([CanBeNull] string targetService, [CanBeNull] string targetEnvironment);
-
-        /// <summary>
-        /// <para>Produces following annotations based on given inputs:</para>
-        /// <list type="bullet">
-        ///     <item><description><see cref="WellKnownAnnotations.Custom.Request.Replica"/></description></item>
-        /// </list>
-        /// </summary>
-        void SetReplica([NotNull] string replica);
     }
 }
