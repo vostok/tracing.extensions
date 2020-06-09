@@ -23,6 +23,21 @@ namespace Vostok.Tracing.Extensions.Custom
         }
 
         /// <summary>
+        /// <para>Begins a span of <see cref="WellKnownSpanKinds.Custom.Cluster"/> kind and returns a specialized builder to aid in filling relevant annotations.</para>
+        /// <para>See <see cref="ICustomRequestClientSpanBuilder"/> for more details.</para>
+        /// </summary>
+        public static ICustomRequestClusterSpanBuilder BeginCustomRequestClusterSpan([NotNull] this ITracer tracer, [NotNull] string operationName)
+        {
+            if (tracer == null)
+                throw new ArgumentNullException(nameof(tracer));
+
+            if (operationName == null)
+                throw new ArgumentNullException(nameof(operationName));
+
+            return new CustomRequestClusterSpanBuilder(tracer.BeginSpan(), operationName);
+        }
+
+        /// <summary>
         /// <para>Begins a span of <see cref="WellKnownSpanKinds.Custom.Client"/> kind and returns a specialized builder to aid in filling relevant annotations.</para>
         /// <para>See <see cref="ICustomRequestClientSpanBuilder"/> for more details.</para>
         /// </summary>
