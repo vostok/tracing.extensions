@@ -14,12 +14,12 @@ namespace Vostok.Tracing.Extensions.Custom
         {
             if (targetService != null)
             {
-                SetAnnotation(WellKnownAnnotations.Http.Request.TargetService, targetService);
+                SetAnnotation(WellKnownAnnotations.Custom.Request.TargetService, targetService);
             }
 
             if (targetEnvironment != null)
             {
-                SetAnnotation(WellKnownAnnotations.Http.Request.TargetEnvironment, targetEnvironment);
+                SetAnnotation(WellKnownAnnotations.Custom.Request.TargetEnvironment, targetEnvironment);
             }
         }
     }
