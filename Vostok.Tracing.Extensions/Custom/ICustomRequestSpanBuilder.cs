@@ -20,10 +20,11 @@ namespace Vostok.Tracing.Extensions.Custom
         /// <summary>
         /// <para>Produces following annotations based on given inputs:</para>
         /// <list type="bullet">
-        ///     <item><description><see cref="WellKnownAnnotations.Custom.Response.Status"/></description></item>
+        ///     <item><description>Custom <see cref="WellKnownAnnotations.Custom.Response.Status"/> (if provided with non-null value)</description></item>
+        ///     <item><description>Well-known <see cref="WellKnownAnnotations.Common.Status"/> (if provided with non-null value)</description></item>
         ///     <item><description><see cref="WellKnownAnnotations.Custom.Response.Size"/> (if provided with non-null value)</description></item>
         /// </list>
         /// </summary>
-        void SetResponseDetails([NotNull] string status, [CanBeNull] long? size);
+        void SetResponseDetails([CanBeNull] string customStatus, [CanBeNull] string wellKnownStatus, [CanBeNull] long? size);
     }
 }

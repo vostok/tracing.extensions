@@ -17,9 +17,13 @@ namespace Vostok.Tracing.Extensions.Custom
                 SetAnnotation(WellKnownAnnotations.Custom.Operation.Size, size.Value);
         }
 
-        public void SetOperationStatus(string status)
+        public void SetOperationStatus(string customStatus, string wellKnownStatus)
         {
-            SetAnnotation(WellKnownAnnotations.Custom.Operation.Status, status);
+            if (customStatus != null)
+                SetAnnotation(WellKnownAnnotations.Custom.Operation.Status, customStatus);
+
+            if (wellKnownStatus != null)
+                SetAnnotation(WellKnownAnnotations.Common.Status, wellKnownStatus);
         }
     }
 }
