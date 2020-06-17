@@ -10,7 +10,7 @@ notests *default:
     - module vostok.tracing.abstractions
 
   deps:
-    - vostok.tracing.abstractions@custom
+    - vostok.tracing.abstractions
     - vostok.devtools
     - vostok.commons.helpers/src
 
