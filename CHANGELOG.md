@@ -1,3 +1,7 @@
+## 0.1.3 (17-06-2020):
+
+Added custom operation, client and cluster spans builders.
+
 ## 0.1.2 (30-03-2020):
 
 Added `BeginNewTrace` extension.
