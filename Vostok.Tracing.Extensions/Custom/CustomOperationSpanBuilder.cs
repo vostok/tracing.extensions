@@ -25,5 +25,14 @@ namespace Vostok.Tracing.Extensions.Custom
             if (wellKnownStatus != null)
                 SetAnnotation(WellKnownAnnotations.Common.Status, wellKnownStatus);
         }
+
+        public void SetTargetDetails(string targetService, string targetEnvironment)
+        {
+            if (targetService != null)
+                SetAnnotation(WellKnownAnnotations.Custom.Operation.TargetService, targetService);
+
+            if (targetEnvironment != null)
+                SetAnnotation(WellKnownAnnotations.Custom.Operation.TargetEnvironment, targetEnvironment);
+        }
     }
 }
