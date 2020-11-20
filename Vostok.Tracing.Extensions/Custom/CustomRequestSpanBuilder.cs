@@ -32,14 +32,10 @@ namespace Vostok.Tracing.Extensions.Custom
         public void SetTargetDetails(string targetService, string targetEnvironment)
         {
             if (targetService != null)
-            {
                 SetAnnotation(WellKnownAnnotations.Custom.Request.TargetService, targetService);
-            }
 
             if (targetEnvironment != null)
-            {
                 SetAnnotation(WellKnownAnnotations.Custom.Request.TargetEnvironment, targetEnvironment);
-            }
         }
     }
 }

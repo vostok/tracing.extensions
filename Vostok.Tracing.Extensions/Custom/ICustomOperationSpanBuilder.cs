@@ -25,5 +25,14 @@ namespace Vostok.Tracing.Extensions.Custom
         /// </list>
         /// </summary>
         void SetOperationStatus([CanBeNull] string customStatus, [CanBeNull] string wellKnownStatus);
+
+        /// <summary>
+        /// <para>Produces following annotations based on given inputs:</para>
+        /// <list type="bullet">
+        ///     <item><description><see cref="WellKnownAnnotations.Custom.Operation.TargetService"/> (if provided with non-null value)</description></item>
+        ///     <item><description><see cref="WellKnownAnnotations.Custom.Operation.TargetEnvironment"/> (if provided with non-null value)</description></item>
+        /// </list>
+        /// </summary>
+        void SetTargetDetails([CanBeNull] string targetService, [CanBeNull] string targetEnvironment);
     }
 }
