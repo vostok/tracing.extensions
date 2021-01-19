@@ -37,5 +37,8 @@ namespace Vostok.Tracing.Extensions.Custom
             if (targetEnvironment != null)
                 SetAnnotation(WellKnownAnnotations.Custom.Request.TargetEnvironment, targetEnvironment);
         }
+        
+        public void SetCustomAnnotation(string key, object value, bool allowOverwrite = true) =>
+            SetAnnotation($"custom.{key}", value, allowOverwrite);
     }
 }
