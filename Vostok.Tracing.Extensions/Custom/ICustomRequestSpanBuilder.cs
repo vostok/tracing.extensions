@@ -26,5 +26,10 @@ namespace Vostok.Tracing.Extensions.Custom
         /// </list>
         /// </summary>
         void SetResponseDetails([CanBeNull] string customStatus, [CanBeNull] string wellKnownStatus, [CanBeNull] long? size);
+        
+        /// <summary>
+        /// <para>Produces annotation with unknown and possibly modified <paramref name="key"/> (should be used only when no suitable <see cref="WellKnownAnnotations"/> is available)</para>
+        /// </summary>
+        void SetCustomAnnotation([NotNull] string key, [CanBeNull] object value, bool allowOverwrite = true);
     }
 }
