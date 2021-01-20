@@ -36,7 +36,8 @@ namespace Vostok.Tracing.Extensions.Custom
         void SetTargetDetails([CanBeNull] string targetService, [CanBeNull] string targetEnvironment);
 
         /// <summary>
-        /// <para>Produces annotation with unknown and possibly modified <paramref name="key"/> (should be used only when no suitable <see cref="WellKnownAnnotations"/> is available)</para>
+        /// <para>Set the annotation with <c>custom.{</c><paramref name="key"/><c>}</c> key and given <paramref name="value"/>.</para>
+        /// <inheritdoc cref="ISpanBuilder.SetAnnotation"/>
         /// </summary>
         void SetCustomAnnotation([NotNull] string key, [CanBeNull] object value, bool allowOverwrite = true);
     }
