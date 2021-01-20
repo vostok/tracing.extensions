@@ -1,6 +1,10 @@
+## 0.1.5 (20-01-2021):
+
+Added `SetCustomAnnotation` method.
+
 ## 0.1.4 (20-11-2020):
 
-Add target annotations for custom operation span.
+Added target annotations for custom operation span.
 
 ## 0.1.3 (17-06-2020):
 
