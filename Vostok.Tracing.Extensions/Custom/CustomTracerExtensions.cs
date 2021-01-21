@@ -24,7 +24,7 @@ namespace Vostok.Tracing.Extensions.Custom
 
         /// <summary>
         /// <para>Begins a span of <see cref="WellKnownSpanKinds.Custom.Cluster"/> kind and returns a specialized builder to aid in filling relevant annotations.</para>
-        /// <para>See <see cref="ICustomRequestClientSpanBuilder"/> for more details.</para>
+        /// <para>See <see cref="ICustomRequestClusterSpanBuilder"/> for more details.</para>
         /// </summary>
         public static ICustomRequestClusterSpanBuilder BeginCustomRequestClusterSpan([NotNull] this ITracer tracer, [NotNull] string operationName)
         {
@@ -38,8 +38,8 @@ namespace Vostok.Tracing.Extensions.Custom
         }
 
         /// <summary>
-        /// <para>Begins a span of <see cref="WellKnownSpanKinds.Custom.Client"/> kind and returns a specialized builder to aid in filling relevant annotations.</para>
-        /// <para>See <see cref="ICustomRequestClientSpanBuilder"/> for more details.</para>
+        /// <para>Begins a span of <see cref="WellKnownSpanKinds.Custom.Operation"/> kind and returns a specialized builder to aid in filling relevant annotations.</para>
+        /// <para>See <see cref="ICustomOperationSpanBuilder"/> for more details.</para>
         /// </summary>
         public static ICustomOperationSpanBuilder BeginCustomOperationSpan([NotNull] this ITracer tracer, [NotNull] string operationName)
         {
