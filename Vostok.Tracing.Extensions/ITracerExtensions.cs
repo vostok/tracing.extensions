@@ -16,8 +16,12 @@ namespace Vostok.Tracing.Extensions
             new NewTraceContextUsing(tracer, null, null);
         
         [NotNull]
-        public static ISpanBuilder BeginNewTrace([NotNull] this ITracer tracer, [CanBeNull] ISpanBuilder currentSpan, [CanBeNull] Guid? traceId) =>
-            new NewTraceContextUsing(tracer, currentSpan, traceId);
+        public static ISpanBuilder BeginNewTrace([NotNull] this ITracer tracer, [NotNull] ISpanBuilder currentSpan) =>
+            new NewTraceContextUsing(tracer, currentSpan, null);
+        
+        [NotNull]
+        public static ISpanBuilder BeginNewTrace([NotNull] this ITracer tracer, Guid traceId) =>
+            new NewTraceContextUsing(tracer, null, traceId);
         
         private class NewTraceContextUsing : ISpanBuilder
         {
