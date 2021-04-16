@@ -13,11 +13,11 @@ namespace Vostok.Tracing.Extensions
         /// </summary>
         [NotNull]
         public static ISpanBuilder BeginNewTrace([NotNull] this ITracer tracer) =>
-            new NewTraceContextUsing(tracer, Guid.NewGuid());
+            new NewTraceContextUsing(tracer, null, null);
         
         [NotNull]
-        public static ISpanBuilder BeginNewTrace([NotNull] this ITracer tracer, Guid traceId) =>
-            new NewTraceContextUsing(tracer, traceId);
+        public static ISpanBuilder BeginNewTrace([NotNull] this ITracer tracer, [CanBeNull] ISpanBuilder currentSpan, [CanBeNull] Guid? traceId) =>
+            new NewTraceContextUsing(tracer, currentSpan, traceId);
         
         private class NewTraceContextUsing : ISpanBuilder
         {
@@ -25,13 +25,13 @@ namespace Vostok.Tracing.Extensions
             private readonly ISpanBuilder builder;
             private readonly TraceContext oldContext;
 
-            public NewTraceContextUsing(ITracer tracer, Guid traceId)
+            public NewTraceContextUsing([NotNull] ITracer tracer, [CanBeNull] ISpanBuilder currentSpan, [CanBeNull] Guid? traceId)
             {
                 this.tracer = tracer;
 
                 oldContext = tracer.CurrentContext;
 
-                tracer.CurrentContext = new TraceContext(traceId, Guid.Empty);
+                tracer.CurrentContext = traceId.HasValue ? new TraceContext(traceId.Value, Guid.Empty) : null;
 
                 builder = tracer.BeginSpan();
 
@@ -40,6 +40,8 @@ namespace Vostok.Tracing.Extensions
                     builder.SetAnnotation("ParentTraceId", oldContext.TraceId);
                     builder.SetAnnotation("ParentTraceSpanId", oldContext.SpanId);
                 }
+
+                currentSpan?.SetAnnotation("ChildTraceId", builder.CurrentSpan.TraceId);
             }
 
             public void Dispose()
