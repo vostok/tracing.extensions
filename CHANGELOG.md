@@ -1,3 +1,7 @@
+## 0.1.6 (21-04-2021):
+
+Added `BeginNewTrace` overloads with traceId and current span.
+
 ## 0.1.5 (20-01-2021):
 
 Added `SetCustomAnnotation` method.
