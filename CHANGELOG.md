@@ -1,3 +1,7 @@
+## 0.1.9 (26-05-2022):
+
+Added `CleanCurrentContext` extension.
+
 ## 0.1.8 (06-12-2021):
 
 Added `net6.0` target.
