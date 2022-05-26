@@ -1,26 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-
   <Import Project="..\..\vostok.devtools\library-common-props\Test-Project.props" />
   <Import Project="..\..\vostok.devtools\git-commit-to-assembly-title\Vostok.Tools.GitCommit2AssemblyTitle.props" />
-
   <PropertyGroup>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="5.4.1" />
     <PackageReference Include="NSubstitute" Version="3.1.0" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\Vostok.Tracing.Extensions\Vostok.Tracing.Extensions.csproj" />
   </ItemGroup>
-
   <ItemGroup>
     <Reference Include="Vostok.Tracing.Abstractions">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\vostok.tracing.abstractions\Vostok.Tracing.Abstractions\bin\Release\$(ReferencesFramework)\Vostok.Tracing.Abstractions.dll</HintPath>
     </Reference>
+    <Reference Include="Vostok.Tracing">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\vostok.tracing\Vostok.Tracing\bin\Release\$(ReferencesFramework)\Vostok.Tracing.dll</HintPath>
+    </Reference>
   </ItemGroup>
-  
 </Project>

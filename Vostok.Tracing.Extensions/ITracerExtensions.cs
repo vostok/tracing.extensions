@@ -1,5 +1,6 @@
 ﻿using System;
 using JetBrains.Annotations;
+using Vostok.Commons.Helpers.Disposable;
 using Vostok.Tracing.Abstractions;
 
 namespace Vostok.Tracing.Extensions
@@ -22,6 +23,16 @@ namespace Vostok.Tracing.Extensions
         [NotNull]
         public static ISpanBuilder BeginNewTrace([NotNull] this ITracer tracer, Guid traceId) =>
             new NewTraceContextUsing(tracer, null, traceId);
+
+        [NotNull]
+        public static IDisposable CleanCurrentContext([NotNull] this ITracer tracer)
+        {
+            var context = tracer.CurrentContext;
+
+            tracer.CurrentContext = null;
+
+            return new ActionDisposable(() => tracer.CurrentContext = context);
+        }
         
         private class NewTraceContextUsing : ISpanBuilder
         {
