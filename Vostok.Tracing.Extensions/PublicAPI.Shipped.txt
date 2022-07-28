@@ -1,0 +1,40 @@
+static Vostok.Tracing.Extensions.Custom.CustomTracerExtensions.BeginCustomOperationSpan(this Vostok.Tracing.Abstractions.ITracer tracer, string operationName) -> Vostok.Tracing.Extensions.Custom.ICustomOperationSpanBuilder
+static Vostok.Tracing.Extensions.Custom.CustomTracerExtensions.BeginCustomRequestClientSpan(this Vostok.Tracing.Abstractions.ITracer tracer, string operationName) -> Vostok.Tracing.Extensions.Custom.ICustomRequestClientSpanBuilder
+static Vostok.Tracing.Extensions.Custom.CustomTracerExtensions.BeginCustomRequestClusterSpan(this Vostok.Tracing.Abstractions.ITracer tracer, string operationName) -> Vostok.Tracing.Extensions.Custom.ICustomRequestClusterSpanBuilder
+static Vostok.Tracing.Extensions.Http.HttpTracerExtensions.BeginHttpClientSpan(this Vostok.Tracing.Abstractions.ITracer tracer, string operationName = null) -> Vostok.Tracing.Extensions.Http.IHttpRequestClientSpanBuilder
+static Vostok.Tracing.Extensions.Http.HttpTracerExtensions.BeginHttpClusterSpan(this Vostok.Tracing.Abstractions.ITracer tracer, string operationName = null) -> Vostok.Tracing.Extensions.Http.IHttpRequestClusterSpanBuilder
+static Vostok.Tracing.Extensions.Http.HttpTracerExtensions.BeginHttpServerSpan(this Vostok.Tracing.Abstractions.ITracer tracer, string operationName = null) -> Vostok.Tracing.Extensions.Http.IHttpRequestServerSpanBuilder
+static Vostok.Tracing.Extensions.ITracerExtensions.BeginNewTrace(this Vostok.Tracing.Abstractions.ITracer tracer) -> Vostok.Tracing.Abstractions.ISpanBuilder
+static Vostok.Tracing.Extensions.ITracerExtensions.BeginNewTrace(this Vostok.Tracing.Abstractions.ITracer tracer, System.Guid traceId) -> Vostok.Tracing.Abstractions.ISpanBuilder
+static Vostok.Tracing.Extensions.ITracerExtensions.BeginNewTrace(this Vostok.Tracing.Abstractions.ITracer tracer, Vostok.Tracing.Abstractions.ISpanBuilder currentSpan) -> Vostok.Tracing.Abstractions.ISpanBuilder
+static Vostok.Tracing.Extensions.ITracerExtensions.CleanCurrentContext(this Vostok.Tracing.Abstractions.ITracer tracer) -> System.IDisposable
+Vostok.Tracing.Extensions.Custom.CustomTracerExtensions
+Vostok.Tracing.Extensions.Custom.ICustomOperationSpanBuilder
+Vostok.Tracing.Extensions.Custom.ICustomOperationSpanBuilder.SetCustomAnnotation(string key, object value, bool allowOverwrite = true) -> void
+Vostok.Tracing.Extensions.Custom.ICustomOperationSpanBuilder.SetOperationDetails(long? size) -> void
+Vostok.Tracing.Extensions.Custom.ICustomOperationSpanBuilder.SetOperationStatus(string customStatus, string wellKnownStatus) -> void
+Vostok.Tracing.Extensions.Custom.ICustomOperationSpanBuilder.SetTargetDetails(string targetService, string targetEnvironment) -> void
+Vostok.Tracing.Extensions.Custom.ICustomRequestClientSpanBuilder
+Vostok.Tracing.Extensions.Custom.ICustomRequestClientSpanBuilder.SetReplica(string replica) -> void
+Vostok.Tracing.Extensions.Custom.ICustomRequestClientSpanBuilder.SetTargetDetails(string targetService, string targetEnvironment) -> void
+Vostok.Tracing.Extensions.Custom.ICustomRequestClusterSpanBuilder
+Vostok.Tracing.Extensions.Custom.ICustomRequestClusterSpanBuilder.SetTargetDetails(string targetService, string targetEnvironment) -> void
+Vostok.Tracing.Extensions.Custom.ICustomRequestSpanBuilder
+Vostok.Tracing.Extensions.Custom.ICustomRequestSpanBuilder.SetCustomAnnotation(string key, object value, bool allowOverwrite = true) -> void
+Vostok.Tracing.Extensions.Custom.ICustomRequestSpanBuilder.SetRequestDetails(long? size) -> void
+Vostok.Tracing.Extensions.Custom.ICustomRequestSpanBuilder.SetResponseDetails(string customStatus, string wellKnownStatus, long? size) -> void
+Vostok.Tracing.Extensions.Custom.ICustomSpanBuilder
+Vostok.Tracing.Extensions.Http.HttpTracerExtensions
+Vostok.Tracing.Extensions.Http.IHttpRequestClientSpanBuilder
+Vostok.Tracing.Extensions.Http.IHttpRequestClientSpanBuilder.SetTargetDetails(string targetService, string targetEnvironment) -> void
+Vostok.Tracing.Extensions.Http.IHttpRequestClusterSpanBuilder
+Vostok.Tracing.Extensions.Http.IHttpRequestClusterSpanBuilder.SetClusterStatus(string status) -> void
+Vostok.Tracing.Extensions.Http.IHttpRequestClusterSpanBuilder.SetClusterStrategy(string strategyName) -> void
+Vostok.Tracing.Extensions.Http.IHttpRequestClusterSpanBuilder.SetTargetDetails(string targetService, string targetEnvironment) -> void
+Vostok.Tracing.Extensions.Http.IHttpRequestServerSpanBuilder
+Vostok.Tracing.Extensions.Http.IHttpRequestServerSpanBuilder.SetClientDetails(string name, System.Net.IPAddress address) -> void
+Vostok.Tracing.Extensions.Http.IHttpRequestSpanBuilder
+Vostok.Tracing.Extensions.Http.IHttpRequestSpanBuilder.SetRequestDetails(string url, string method, long? bodySize) -> void
+Vostok.Tracing.Extensions.Http.IHttpRequestSpanBuilder.SetRequestDetails(System.Uri url, string method, long? bodySize) -> void
+Vostok.Tracing.Extensions.Http.IHttpRequestSpanBuilder.SetResponseDetails(int responseCode, long? bodySize) -> void
+Vostok.Tracing.Extensions.ITracerExtensions
