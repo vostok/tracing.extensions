@@ -1,3 +1,7 @@
+## 0.1.10 (12-12-2024): 
+
+Bump NuGet deps versions
+
 ## 0.1.9 (26-05-2022):
 
 Added `CleanCurrentContext` extension.
