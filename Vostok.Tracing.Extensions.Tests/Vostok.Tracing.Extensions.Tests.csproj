@@ -12,13 +12,6 @@
     <ProjectReference Include="..\Vostok.Tracing.Extensions\Vostok.Tracing.Extensions.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Vostok.Tracing.Abstractions">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\vostok.tracing.abstractions\Vostok.Tracing.Abstractions\bin\Release\$(ReferencesFramework)\Vostok.Tracing.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Vostok.Tracing">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\vostok.tracing\Vostok.Tracing\bin\Release\$(ReferencesFramework)\Vostok.Tracing.dll</HintPath>
-    </Reference>
+    <ModuleReference Include="vostok.tracing" />
   </ItemGroup>
 </Project>
