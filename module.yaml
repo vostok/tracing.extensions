@@ -8,6 +8,22 @@ notests *default:
   install:
     - Vostok.Tracing.Extensions/bin/Release/netstandard2.0/Vostok.Tracing.Extensions.dll
     - module vostok.tracing.abstractions
+    - groups:
+        - target-framework: "netstandard2.0"
+          libraries:
+            - Vostok.Tracing.Extensions/bin/Release/netstandard2.0/Vostok.Tracing.Extensions.dll
+          modules:
+            - name: vostok.tracing.abstractions
+        - target-framework: "net6.0"
+          libraries:
+            - Vostok.Tracing.Extensions/bin/Release/net6.0/Vostok.Tracing.Extensions.dll
+          modules:
+            - name: vostok.tracing.abstractions
+        - target-framework: "net8.0"
+          libraries:
+            - Vostok.Tracing.Extensions/bin/Release/net8.0/Vostok.Tracing.Extensions.dll
+          modules:
+            - name: vostok.tracing.abstractions
 
   deps:
     - vostok.tracing.abstractions
@@ -20,6 +36,28 @@ full-build > notests:
     - vostok.devtools@with-net6.0
     - vostok.tracing
 
+  install:
+    - Vostok.Tracing.Extensions/bin/Release/netstandard2.0/Vostok.Tracing.Extensions.dll
+    - module vostok.tracing.abstractions
+    - groups:
+        - target-framework: "netstandard2.0"
+          libraries:
+            - Vostok.Tracing.Extensions/bin/Release/netstandard2.0/Vostok.Tracing.Extensions.dll
+          modules:
+            - name: vostok.tracing.abstractions
+        - target-framework: "net6.0"
+          libraries:
+            - Vostok.Tracing.Extensions/bin/Release/net6.0/Vostok.Tracing.Extensions.dll
+          modules:
+            - name: vostok.tracing.abstractions
+        - target-framework: "net8.0"
+          libraries:
+            - Vostok.Tracing.Extensions/bin/Release/net8.0/Vostok.Tracing.Extensions.dll
+          modules:
+            - name: vostok.tracing.abstractions
+
   build:
     target: Vostok.Tracing.Extensions.sln
     configuration: Release
+    tool:
+      name: dotnet
