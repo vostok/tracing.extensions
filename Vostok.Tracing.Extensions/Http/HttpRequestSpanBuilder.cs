@@ -40,9 +40,9 @@ namespace Vostok.Tracing.Extensions.Http
             if (method == null)
                 throw new ArgumentNullException(nameof(method));
 
-            url = UrlExtensions.ToStringWithoutQuery(url);
+            var indexOfQuery = UrlExtensions.IndexOfQuery(url);
 
-            SetAnnotation(WellKnownAnnotations.Common.Operation, operationName ?? $"{method}: {UrlNormalizer.NormalizePath(url)}");
+            SetAnnotation(WellKnownAnnotations.Common.Operation, operationName ?? $"{method}: {UrlNormalizer.NormalizePath(url, 0, indexOfQuery)}");
 
             SetAnnotation(WellKnownAnnotations.Http.Request.Url, url);
             SetAnnotation(WellKnownAnnotations.Http.Request.Method, method);
